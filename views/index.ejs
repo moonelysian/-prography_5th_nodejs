@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>INDEX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      a:link{color: black; text-decoration: none;}
+      a:visited{color: black;}
+      a:hover{color: lightblue; text-decoration: none;}
+    </style>
+  </head>
+  <body>
+    <div class="container" style="padding-top:3em;">
+      <form class="row" action="/create" method="POST">
+          <div class="col-10">
+            <label>Enter Todo Items</label>
+            <input type="text" class="form-control" name="item" placeholder="Enter something todo" value="">
+          </div>
+          
+          <div style="text-align: right; padding-top:30px;">
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+        <div>
+          <ul class="row align-items-center">
+           <% for(var i=0; i<todoList.length; i++){ %>
+              <p class="col-9"> 
+                <a href="/show/<%= todoList[i].id %>"><%= todoList[i].title %></a>
+                <form class="col-2" action="/delete/<%= todoList[i].id %>" method="post" style="text-align:right">
+                  <button type="submit" class="btn btn-outline-danger">X</button>
+                </form>
+                <br>
+              </p>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+  </body>
+</html>
